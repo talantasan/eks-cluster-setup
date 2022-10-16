@@ -3,7 +3,7 @@ resource "aws_route_table" "rt_public" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = "aws_internet_gateway.project1_igw.id"
+    gateway_id = aws_internet_gateway.project1_igw.id
   }
 
   tags = {
@@ -16,7 +16,7 @@ resource "aws_route_table" "rt_private1" {
 
   route {
     cidr_block     = "0.0.0.0/0"
-    nat_gateway_id = "aws_nat_gateway.nat1.id"
+    nat_gateway_id = aws_nat_gateway.nat1.id
 
   }
 
@@ -30,7 +30,7 @@ resource "aws_route_table" "rt_private2" {
 
   route {
     cidr_block     = "0.0.0.0/0"
-    nat_gateway_id = "aws_nat_gateway.nat2.id"
+    nat_gateway_id = aws_nat_gateway.nat2.id
   }
 
   tags = {
