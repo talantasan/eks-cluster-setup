@@ -9,10 +9,10 @@ resource "aws_vpc" "project1_vpc" {
   # Required for EKS
   enable_dns_support = true
 
-  enable_classiclink_dns_support = false
-  enable_classiclink = false
+  enable_classiclink_dns_support   = false
+  enable_classiclink               = false
   assign_generated_ipv6_cidr_block = false
-  
+
   tags = {
     "name" = "project1"
   }
@@ -20,6 +20,6 @@ resource "aws_vpc" "project1_vpc" {
 
 # Useful for using in modules
 output "project1_vpc_id" {
-  value = aws_vpc.project1_vpc.id
+  value       = aws_vpc.project1_vpc.id
   description = "project1 vpc id"
 }
