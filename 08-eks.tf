@@ -47,3 +47,17 @@ resource "aws_eks_cluster" "eks" {
     aws_iam_role_policy_attachment.amazon_eks_cluster_policy
   ]
 }
+
+
+resource "null_resource" "set-kubeconfig" {
+ depends_on = [
+   aws_eks_cluster.eks
+ ]
+ triggers = {
+   always_run = "${timestamp()}"
+ }
+ 
+ provisioner "local-exec" {
+   command = "aws eks --region us-east-1 update-kubeconfig --name ${aws_eks_cluster.eks.name} --profile project1"
+ }
+}
