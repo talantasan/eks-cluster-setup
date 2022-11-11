@@ -1,0 +1,19 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": [
+          "eks:DescribeNodegroup",
+          "eks:ListNodegroups",
+          "eks:DescribeCluster",
+          "eks:ListClusters",
+          "eks:AccessKubernetesApi",
+          "eks:ListUpdates",
+          "eks:ListFargateProfiles",
+          "ssm:GetParameter"
+        ],
+        "Effect": "Allow",
+        "Resource": "*"
+      }
+    ]
+  }

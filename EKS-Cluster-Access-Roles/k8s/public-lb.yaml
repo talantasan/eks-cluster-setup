@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: talant-public-lb
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: external
+spec:
+  type: LoadBalancer
+  selector:
+    app: talant-deploy
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: web

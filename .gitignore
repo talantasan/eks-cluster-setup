@@ -1,3 +1,4 @@
 *hcl
-*.terraform/*
+**.terraform/*
 *tfstate*
+EKS-Cluster-Access-Roles/terraform/.terraform

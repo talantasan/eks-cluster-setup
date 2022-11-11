@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: talant-deploy
+  name: talant-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: talant-deploy
+  template:
+    metadata:
+      labels:
+        app: talant-deploy
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: role
+                operator: In
+                values:
+                - talant-worker-node 
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+          name: web
+        resources:
+          requests:
+            memory: 250Mi
+            cpu: 250m
+          limits:
+            memory: 250Mi
+            cpu: 250m
